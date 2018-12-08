@@ -15,7 +15,6 @@
 		C412A74821AE976000708873 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A74721AE976000708873 /* main.m */; };
 		C412A75021AE97A800708873 /* NTNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A74F21AE97A800708873 /* NTNumber.m */; };
 		C412A75321AE97C700708873 /* NTNumberStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75221AE97C700708873 /* NTNumberStore.m */; };
-		C412A75621AE984100708873 /* NTListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75521AE984100708873 /* NTListViewModel.m */; };
 		C412A75921AE986600708873 /* NTFavouritesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75821AE986600708873 /* NTFavouritesViewModel.m */; };
 		C412A75C21AE987000708873 /* NTStatsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75B21AE987000708873 /* NTStatsViewModel.m */; };
 		C412A75F21AE98A300708873 /* NTListDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75E21AE98A300708873 /* NTListDetailViewModel.m */; };
@@ -30,6 +29,7 @@
 		C46256D121B8F18100809B23 /* NTChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D021B8F18100809B23 /* NTChartView.m */; };
 		C46256D421B92F3900809B23 /* NTAddItemToListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D321B92F3900809B23 /* NTAddItemToListTableViewCell.m */; };
 		C46256D721BBADD500809B23 /* NTListFatherViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D621BBADD500809B23 /* NTListFatherViewModel.m */; };
+		C46256DA21BBAFAD00809B23 /* NTListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D921BBAFAD00809B23 /* NTListViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +46,6 @@
 		C412A74F21AE97A800708873 /* NTNumber.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTNumber.m; sourceTree = "<group>"; };
 		C412A75121AE97C700708873 /* NTNumberStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTNumberStore.h; sourceTree = "<group>"; };
 		C412A75221AE97C700708873 /* NTNumberStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTNumberStore.m; sourceTree = "<group>"; };
-		C412A75421AE984100708873 /* NTListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListViewModel.h; sourceTree = "<group>"; };
-		C412A75521AE984100708873 /* NTListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTListViewModel.m; sourceTree = "<group>"; };
 		C412A75721AE986600708873 /* NTFavouritesViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTFavouritesViewModel.h; sourceTree = "<group>"; };
 		C412A75821AE986600708873 /* NTFavouritesViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTFavouritesViewModel.m; sourceTree = "<group>"; };
 		C412A75A21AE987000708873 /* NTStatsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTStatsViewModel.h; sourceTree = "<group>"; };
@@ -79,6 +77,8 @@
 		C46256D321B92F3900809B23 /* NTAddItemToListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTAddItemToListTableViewCell.m; sourceTree = "<group>"; };
 		C46256D521BBADD500809B23 /* NTListFatherViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListFatherViewModel.h; sourceTree = "<group>"; };
 		C46256D621BBADD500809B23 /* NTListFatherViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTListFatherViewModel.m; sourceTree = "<group>"; };
+		C46256D821BBAFAD00809B23 /* NTListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListViewModel.h; sourceTree = "<group>"; };
+		C46256D921BBAFAD00809B23 /* NTListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTListViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,8 +167,8 @@
 			children = (
 				C46256D521BBADD500809B23 /* NTListFatherViewModel.h */,
 				C46256D621BBADD500809B23 /* NTListFatherViewModel.m */,
-				C412A75421AE984100708873 /* NTListViewModel.h */,
-				C412A75521AE984100708873 /* NTListViewModel.m */,
+				C46256D821BBAFAD00809B23 /* NTListViewModel.h */,
+				C46256D921BBAFAD00809B23 /* NTListViewModel.m */,
 				C412A75721AE986600708873 /* NTFavouritesViewModel.h */,
 				C412A75821AE986600708873 /* NTFavouritesViewModel.m */,
 				C412A75A21AE987000708873 /* NTStatsViewModel.h */,
@@ -261,13 +261,13 @@
 				C412A74021AE975E00708873 /* NumberTable.xcdatamodeld in Sources */,
 				C412A75F21AE98A300708873 /* NTListDetailViewModel.m in Sources */,
 				C412A74821AE976000708873 /* main.m in Sources */,
-				C412A75621AE984100708873 /* NTListViewModel.m in Sources */,
 				C46256D421B92F3900809B23 /* NTAddItemToListTableViewCell.m in Sources */,
 				C412A79021B1087700708873 /* NTListDetailViewController.m in Sources */,
 				C46256D721BBADD500809B23 /* NTListFatherViewModel.m in Sources */,
 				C412A75921AE986600708873 /* NTFavouritesViewModel.m in Sources */,
 				C412A73721AE975E00708873 /* AppDelegate.m in Sources */,
 				C412A79421B1087700708873 /* NTListViewController.m in Sources */,
+				C46256DA21BBAFAD00809B23 /* NTListViewModel.m in Sources */,
 				C412A79121B1087700708873 /* NTListTableViewCell.m in Sources */,
 				C412A79321B1087700708873 /* NTStatsViewController.m in Sources */,
 				C412A75321AE97C700708873 /* NTNumberStore.m in Sources */,
