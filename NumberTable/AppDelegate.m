@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+
+
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +20,47 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+  //  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NTNumberStore* numberStore = [[NTNumberStore alloc]init];
+    [numberStore fillNumberStore];
+//    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:numberStore requiringSecureCoding:YES error:nil] forKey:@"NumberStore"];
+//    [defaults synchronize];
+   // NSData *data = [NSKeyedArchiver archivedDataWithRootObject:numberStore requiringSecureCoding:YES error:nil];
+  //  numberStore = [NSKeyedUnarchiver unarchivedObjectOfClass: NTNumberStore.class fromData:[defaults objectForKey:@"NumberStore"] error:nil];
+    
+    UIViewController *rootViewController = _window.rootViewController;
+    if ([rootViewController isKindOfClass:UITabBarController.class]){
+        UITabBarController* rootTabBarController = (UITabBarController*)_window.rootViewController;
+        if ([rootTabBarController.viewControllers[0] isKindOfClass:UINavigationController.class ] )
+        {
+            UINavigationController *nav = rootTabBarController.childViewControllers[0];
+            if ([nav.childViewControllers[0] isKindOfClass: NTListViewController.class]){
+                NTListViewController *listViewController = nav.childViewControllers[0];
+                NTListViewModel *startListViewModel = [[NTListViewModel alloc]initWithNumberStore:numberStore];
+                [startListViewModel autorelease];
+                [startListViewModel fillItemStore];
+                listViewController.listViewModel = startListViewModel; //----- MARK: init table
+            }
+            if ([rootTabBarController.viewControllers[1] isKindOfClass: NTFavouritesViewController.class]){
+                NTFavouritesViewController *favouriteViewController = rootTabBarController.viewControllers[1];
+                NTFavouritesViewModel *startFavouriteViewModel = [[NTFavouritesViewModel alloc]initWithNumberStore:numberStore];
+                [startFavouriteViewModel autorelease];
+                [startFavouriteViewModel fillItemStore];
+                favouriteViewController.favouriteViewModel = startFavouriteViewModel;
+            }
+            if([rootTabBarController.viewControllers[2] isKindOfClass:NTStatsViewController.class]){
+                NTStatsViewController* statsViewController = rootTabBarController.viewControllers[2];
+                NTStatsViewModel * startStatsViewModel = [[NTStatsViewModel alloc]initWithNumberStore:numberStore];
+                [startStatsViewModel autorelease];
+                statsViewController.statsViewModel = startStatsViewModel;
+            }
+        }
+       // NSLog(@"%@", root.class);
+    }
+    
+    
+    
     return YES;
 }
 

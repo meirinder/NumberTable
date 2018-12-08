@@ -8,26 +8,77 @@
 
 /* Begin PBXBuildFile section */
 		C412A73721AE975E00708873 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A73621AE975E00708873 /* AppDelegate.m */; };
-		C412A73A21AE975E00708873 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A73921AE975E00708873 /* ViewController.m */; };
 		C412A73D21AE975E00708873 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C412A73B21AE975E00708873 /* Main.storyboard */; };
 		C412A74021AE975E00708873 /* NumberTable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C412A73E21AE975E00708873 /* NumberTable.xcdatamodeld */; };
 		C412A74221AE976000708873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C412A74121AE976000708873 /* Assets.xcassets */; };
 		C412A74521AE976000708873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C412A74321AE976000708873 /* LaunchScreen.storyboard */; };
 		C412A74821AE976000708873 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A74721AE976000708873 /* main.m */; };
+		C412A75021AE97A800708873 /* NTNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A74F21AE97A800708873 /* NTNumber.m */; };
+		C412A75321AE97C700708873 /* NTNumberStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75221AE97C700708873 /* NTNumberStore.m */; };
+		C412A75621AE984100708873 /* NTListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75521AE984100708873 /* NTListViewModel.m */; };
+		C412A75921AE986600708873 /* NTFavouritesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75821AE986600708873 /* NTFavouritesViewModel.m */; };
+		C412A75C21AE987000708873 /* NTStatsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75B21AE987000708873 /* NTStatsViewModel.m */; };
+		C412A75F21AE98A300708873 /* NTListDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A75E21AE98A300708873 /* NTListDetailViewModel.m */; };
+		C412A77821AFAA1100708873 /* NTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A77721AFAA1100708873 /* NTItem.m */; };
+		C412A77B21AFADAA00708873 /* NTNumberConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A77A21AFADAA00708873 /* NTNumberConverter.m */; };
+		C412A79021B1087700708873 /* NTListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78421B1087600708873 /* NTListDetailViewController.m */; };
+		C412A79121B1087700708873 /* NTListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78721B1087600708873 /* NTListTableViewCell.m */; };
+		C412A79221B1087700708873 /* NTFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78921B1087600708873 /* NTFavouritesViewController.m */; };
+		C412A79321B1087700708873 /* NTStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78B21B1087700708873 /* NTStatsViewController.m */; };
+		C412A79421B1087700708873 /* NTListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78D21B1087700708873 /* NTListViewController.m */; };
+		C412A79521B1087700708873 /* NTListFatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78F21B1087700708873 /* NTListFatherViewController.m */; };
+		C46256D121B8F18100809B23 /* NTChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D021B8F18100809B23 /* NTChartView.m */; };
+		C46256D421B92F3900809B23 /* NTAddItemToListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D321B92F3900809B23 /* NTAddItemToListTableViewCell.m */; };
+		C46256D721BBADD500809B23 /* NTListFatherViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D621BBADD500809B23 /* NTListFatherViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C412A73221AE975E00708873 /* NumberTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C412A73521AE975E00708873 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C412A73621AE975E00708873 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C412A73821AE975E00708873 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C412A73921AE975E00708873 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C412A73C21AE975E00708873 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C412A73F21AE975E00708873 /* NumberTable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NumberTable.xcdatamodel; sourceTree = "<group>"; };
 		C412A74121AE976000708873 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C412A74421AE976000708873 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C412A74621AE976000708873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C412A74721AE976000708873 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C412A74E21AE97A800708873 /* NTNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTNumber.h; sourceTree = "<group>"; };
+		C412A74F21AE97A800708873 /* NTNumber.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTNumber.m; sourceTree = "<group>"; };
+		C412A75121AE97C700708873 /* NTNumberStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTNumberStore.h; sourceTree = "<group>"; };
+		C412A75221AE97C700708873 /* NTNumberStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTNumberStore.m; sourceTree = "<group>"; };
+		C412A75421AE984100708873 /* NTListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListViewModel.h; sourceTree = "<group>"; };
+		C412A75521AE984100708873 /* NTListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTListViewModel.m; sourceTree = "<group>"; };
+		C412A75721AE986600708873 /* NTFavouritesViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTFavouritesViewModel.h; sourceTree = "<group>"; };
+		C412A75821AE986600708873 /* NTFavouritesViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTFavouritesViewModel.m; sourceTree = "<group>"; };
+		C412A75A21AE987000708873 /* NTStatsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTStatsViewModel.h; sourceTree = "<group>"; };
+		C412A75B21AE987000708873 /* NTStatsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTStatsViewModel.m; sourceTree = "<group>"; };
+		C412A75D21AE98A300708873 /* NTListDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListDetailViewModel.h; sourceTree = "<group>"; };
+		C412A75E21AE98A300708873 /* NTListDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTListDetailViewModel.m; sourceTree = "<group>"; };
+		C412A76021AE996E00708873 /* NTSharingFavouriteOrUnfavavourite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTSharingFavouriteOrUnfavavourite.h; sourceTree = "<group>"; };
+		C412A77621AFAA1100708873 /* NTItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTItem.h; sourceTree = "<group>"; };
+		C412A77721AFAA1100708873 /* NTItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTItem.m; sourceTree = "<group>"; };
+		C412A77921AFADAA00708873 /* NTNumberConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTNumberConverter.h; sourceTree = "<group>"; };
+		C412A77A21AFADAA00708873 /* NTNumberConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTNumberConverter.m; sourceTree = "<group>"; };
+		C412A78421B1087600708873 /* NTListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListDetailViewController.m; sourceTree = "<group>"; };
+		C412A78521B1087600708873 /* NTFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTFavouritesViewController.h; sourceTree = "<group>"; };
+		C412A78621B1087600708873 /* NTListFatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListFatherViewController.h; sourceTree = "<group>"; };
+		C412A78721B1087600708873 /* NTListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListTableViewCell.m; sourceTree = "<group>"; };
+		C412A78821B1087600708873 /* NTListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListDetailViewController.h; sourceTree = "<group>"; };
+		C412A78921B1087600708873 /* NTFavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTFavouritesViewController.m; sourceTree = "<group>"; };
+		C412A78A21B1087700708873 /* NTListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListTableViewCell.h; sourceTree = "<group>"; };
+		C412A78B21B1087700708873 /* NTStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTStatsViewController.m; sourceTree = "<group>"; };
+		C412A78C21B1087700708873 /* NTStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTStatsViewController.h; sourceTree = "<group>"; };
+		C412A78D21B1087700708873 /* NTListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListViewController.m; sourceTree = "<group>"; };
+		C412A78E21B1087700708873 /* NTListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListViewController.h; sourceTree = "<group>"; };
+		C412A78F21B1087700708873 /* NTListFatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListFatherViewController.m; sourceTree = "<group>"; };
+		C412A79E21B531EA00708873 /* NTNumberTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTNumberTableViewCellDelegate.h; sourceTree = "<group>"; };
+		C46256CE21B8EAC000809B23 /* NTListDetailViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListDetailViewControllerDelegate.h; sourceTree = "<group>"; };
+		C46256CF21B8F18100809B23 /* NTChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTChartView.h; sourceTree = "<group>"; };
+		C46256D021B8F18100809B23 /* NTChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTChartView.m; sourceTree = "<group>"; };
+		C46256D221B92F3900809B23 /* NTAddItemToListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTAddItemToListTableViewCell.h; sourceTree = "<group>"; };
+		C46256D321B92F3900809B23 /* NTAddItemToListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTAddItemToListTableViewCell.m; sourceTree = "<group>"; };
+		C46256D521BBADD500809B23 /* NTListFatherViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListFatherViewModel.h; sourceTree = "<group>"; };
+		C46256D621BBADD500809B23 /* NTListFatherViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTListFatherViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,16 +113,75 @@
 			children = (
 				C412A73521AE975E00708873 /* AppDelegate.h */,
 				C412A73621AE975E00708873 /* AppDelegate.m */,
-				C412A73821AE975E00708873 /* ViewController.h */,
-				C412A73921AE975E00708873 /* ViewController.m */,
 				C412A73B21AE975E00708873 /* Main.storyboard */,
-				C412A74121AE976000708873 /* Assets.xcassets */,
+				C46256CF21B8F18100809B23 /* NTChartView.h */,
+				C46256D021B8F18100809B23 /* NTChartView.m */,
+				C412A79721B4FDA000708873 /* ViewControllers */,
+				C412A79D21B5000600708873 /* ViewModels */,
+				C412A79A21B4FF8700708873 /* Model */,
 				C412A74321AE976000708873 /* LaunchScreen.storyboard */,
+				C412A74121AE976000708873 /* Assets.xcassets */,
 				C412A74621AE976000708873 /* Info.plist */,
 				C412A74721AE976000708873 /* main.m */,
 				C412A73E21AE975E00708873 /* NumberTable.xcdatamodeld */,
 			);
 			path = NumberTable;
+			sourceTree = "<group>";
+		};
+		C412A79721B4FDA000708873 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C412A78621B1087600708873 /* NTListFatherViewController.h */,
+				C412A78F21B1087700708873 /* NTListFatherViewController.m */,
+				C412A78E21B1087700708873 /* NTListViewController.h */,
+				C412A78D21B1087700708873 /* NTListViewController.m */,
+				C412A78521B1087600708873 /* NTFavouritesViewController.h */,
+				C412A78921B1087600708873 /* NTFavouritesViewController.m */,
+				C412A78821B1087600708873 /* NTListDetailViewController.h */,
+				C412A78421B1087600708873 /* NTListDetailViewController.m */,
+				C412A78C21B1087700708873 /* NTStatsViewController.h */,
+				C412A78B21B1087700708873 /* NTStatsViewController.m */,
+				C412A78A21B1087700708873 /* NTListTableViewCell.h */,
+				C412A78721B1087600708873 /* NTListTableViewCell.m */,
+				C46256D221B92F3900809B23 /* NTAddItemToListTableViewCell.h */,
+				C46256D321B92F3900809B23 /* NTAddItemToListTableViewCell.m */,
+				C412A79E21B531EA00708873 /* NTNumberTableViewCellDelegate.h */,
+				C46256CE21B8EAC000809B23 /* NTListDetailViewControllerDelegate.h */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C412A79A21B4FF8700708873 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C412A74E21AE97A800708873 /* NTNumber.h */,
+				C412A74F21AE97A800708873 /* NTNumber.m */,
+				C412A75121AE97C700708873 /* NTNumberStore.h */,
+				C412A75221AE97C700708873 /* NTNumberStore.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C412A79D21B5000600708873 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C46256D521BBADD500809B23 /* NTListFatherViewModel.h */,
+				C46256D621BBADD500809B23 /* NTListFatherViewModel.m */,
+				C412A75421AE984100708873 /* NTListViewModel.h */,
+				C412A75521AE984100708873 /* NTListViewModel.m */,
+				C412A75721AE986600708873 /* NTFavouritesViewModel.h */,
+				C412A75821AE986600708873 /* NTFavouritesViewModel.m */,
+				C412A75A21AE987000708873 /* NTStatsViewModel.h */,
+				C412A75B21AE987000708873 /* NTStatsViewModel.m */,
+				C412A75D21AE98A300708873 /* NTListDetailViewModel.h */,
+				C412A75E21AE98A300708873 /* NTListDetailViewModel.m */,
+				C412A76021AE996E00708873 /* NTSharingFavouriteOrUnfavavourite.h */,
+				C412A77621AFAA1100708873 /* NTItem.h */,
+				C412A77721AFAA1100708873 /* NTItem.m */,
+				C412A77921AFADAA00708873 /* NTNumberConverter.h */,
+				C412A77A21AFADAA00708873 /* NTNumberConverter.m */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,10 +254,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C412A73A21AE975E00708873 /* ViewController.m in Sources */,
+				C412A77821AFAA1100708873 /* NTItem.m in Sources */,
+				C412A77B21AFADAA00708873 /* NTNumberConverter.m in Sources */,
+				C412A75C21AE987000708873 /* NTStatsViewModel.m in Sources */,
+				C46256D121B8F18100809B23 /* NTChartView.m in Sources */,
 				C412A74021AE975E00708873 /* NumberTable.xcdatamodeld in Sources */,
+				C412A75F21AE98A300708873 /* NTListDetailViewModel.m in Sources */,
 				C412A74821AE976000708873 /* main.m in Sources */,
+				C412A75621AE984100708873 /* NTListViewModel.m in Sources */,
+				C46256D421B92F3900809B23 /* NTAddItemToListTableViewCell.m in Sources */,
+				C412A79021B1087700708873 /* NTListDetailViewController.m in Sources */,
+				C46256D721BBADD500809B23 /* NTListFatherViewModel.m in Sources */,
+				C412A75921AE986600708873 /* NTFavouritesViewModel.m in Sources */,
 				C412A73721AE975E00708873 /* AppDelegate.m in Sources */,
+				C412A79421B1087700708873 /* NTListViewController.m in Sources */,
+				C412A79121B1087700708873 /* NTListTableViewCell.m in Sources */,
+				C412A79321B1087700708873 /* NTStatsViewController.m in Sources */,
+				C412A75321AE97C700708873 /* NTNumberStore.m in Sources */,
+				C412A79221B1087700708873 /* NTFavouritesViewController.m in Sources */,
+				C412A75021AE97A800708873 /* NTNumber.m in Sources */,
+				C412A79521B1087700708873 /* NTListFatherViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,8 +415,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96HSFZQ5P3;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/**";
 				INFOPLIST_FILE = NumberTable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,8 +434,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96HSFZQ5P3;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/**";
 				INFOPLIST_FILE = NumberTable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

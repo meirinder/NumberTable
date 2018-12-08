@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "NTNumberStore.h"
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
+        //[NTNumberStore initialize];
+       // [NTNumberStore fillNumberStore];
+        
+        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
+    
 }
