@@ -16,25 +16,22 @@
 
 -(void)archiveData:(NSMutableArray<NTNumber*>*)numberList forKey:(NSString*) key{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSError *error = [[NSError alloc]init ];
+
     
-    NSData* numberStoreDataForArchive = [NSKeyedArchiver archivedDataWithRootObject:numberList requiringSecureCoding:NO error:&error];
+    NSData* numberStoreDataForArchive = [NSKeyedArchiver archivedDataWithRootObject:numberList requiringSecureCoding:NO error:nil];
     [defaults setObject:numberStoreDataForArchive forKey:key];
     [defaults synchronize];
     
-    [error release];
-    [numberStoreDataForArchive release];
 }
 
 -(NSMutableArray<NTNumber*>*)unarchiveData:(NSString*) key{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSError *error = [[NSError alloc]init ];
     NSData *numberStoreDataForUnarchive = [[NSData alloc]initWithData: [defaults objectForKey:key]];
 
     NSMutableArray<NTNumber*>* numberList;
     NSSet *set = [NSSet setWithArray:@[[NSMutableArray class],[NTNumber class]]];
-    numberList = [NSKeyedUnarchiver unarchivedObjectOfClasses: set fromData:numberStoreDataForUnarchive error:&error];
-    [error release];
+    numberList = [NSKeyedUnarchiver unarchivedObjectOfClasses: set fromData:numberStoreDataForUnarchive error:nil];
+    
     [numberStoreDataForUnarchive release];
     return numberList;
 }

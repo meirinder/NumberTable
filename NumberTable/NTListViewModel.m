@@ -75,7 +75,6 @@
 
 -(void)fillItemStore{
     self.itemStore = [[NSMutableArray alloc]init];
-    
     for (NTNumber* ntNumber in _numberStore.numberList) {
         self.item = [[NTItem alloc] initWithFloat: ntNumber.value];
         
