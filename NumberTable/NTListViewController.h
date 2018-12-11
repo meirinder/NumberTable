@@ -6,18 +6,22 @@
 //  Copyright © 2018 Kulizhnikov. All rights reserved.
 //
 
-#import "NTListFatherViewController.h"
+#import "NTListFatherViewModel.h"
 #import "NTListDetailViewModel.h"
 #import "NTListDetailViewController.h"
 #import "NTListDetailViewControllerDelegate.h"
 #import "NTAddItemToListTableViewCell.h"
+#import "NTNumberTableViewCellDelegate.h"
+#import "NTListTableViewCell.h"
+#import "NTAddItemToListTableViewCell.h"
+
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NTListViewController : NTListFatherViewController <NTListDetailViewControllerDelegate>
+@interface NTListViewController :UIViewController <UITableViewDelegate, UITableViewDataSource,NTNumberTableViewCellDelegate,NTListDetailViewControllerDelegate>
 
-@property (nonatomic,retain) NTListViewModel* listViewModel;
+@property (nonatomic,retain) NTListFatherViewModel* listViewModel;
 
 @end
 

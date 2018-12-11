@@ -12,17 +12,47 @@
 @property (nonatomic,retain) NTItem *favouriteItem;
 @property (nonatomic, retain) NSMutableArray<NTItem*>* itemStore;
 @property (nonatomic, retain) NTNumberStore *numberStore;
-
 @property (nonatomic,readonly) NSMutableArray<NSNumber*>* indexes;
 
 @end
 
 @implementation NTFavouritesViewModel
 
+@dynamic isUnfavouriteViewModel;
+-(void) processingFavouriteButton:(NSInteger) index{
+    if(_numberStore.numberList[[_indexes[index] integerValue]].isFavourite){
+        [self setUnfavourite:[_indexes[index] integerValue]];
+    }else{
+        [self setFavourite:[_indexes[index] integerValue]];
+    }
+}
+
+-(void) deleteNumer:(NSInteger)index{
+    [_numberStore.numberList removeObjectAtIndex:[_indexes[index] integerValue]];
+    [self fillItemStore];
+}
+
+-(BOOL) getPolarityOfCell:(NSInteger) index{
+    return _numberStore.numberList[[_indexes[index] integerValue]].isFavourite;
+}
+
+-(NSString*) getTextForStringNumberLabel:(NSInteger) index{
+    return _itemStore[index].numberConvertedTOString;
+}
+
+-(UIColor*) getTextColorForNumberLabel:(NSInteger) index{
+    return _numberStore.numberList[[_indexes[index] integerValue]].color;
+}
+
+-(NSString*) getTextForNumberLabel:(NSInteger) index{
+    return _itemStore[index].number;
+}
+
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore{
     self = [super init];
     if (self) {
         self.numberStore = numberStore;
+        self.isUnfavouriteViewModel = NO;
     }
     return self;
 }

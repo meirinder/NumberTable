@@ -9,69 +9,76 @@
 #import "NTListViewController.h"
 
 @interface NTListViewController ()
+@property (retain, nonatomic) IBOutlet UITableView *listTableView;
+
+@property (nonatomic,retain) UIImage *favouriteImage;
+@property (nonatomic,retain) UIImage *unFavouriteImage;
 
 @end
 
 @implementation NTListViewController
 
 
-
-
-@dynamic listTableView;
-
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [_listViewModel fillItemStore];
-    [[super listTableView] reloadData];
+    [self.listTableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.favouriteImage = [UIImage imageNamed:@"favourite.png"];
+    self.unFavouriteImage = [UIImage imageNamed:@"unfavourite.png"];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == [_listViewModel getItemStore].count) {
-        NTAddItemToListTableViewCell *addCell = [[super listTableView] dequeueReusableCellWithIdentifier:@"AddCell"];
+    if ((indexPath.row == [_listViewModel getItemStore].count)&&(_listViewModel.isUnfavouriteViewModel)) {
+        NTAddItemToListTableViewCell *addCell = [self.listTableView dequeueReusableCellWithIdentifier:@"AddCell"];
         return addCell;
     }
-    NTListTableViewCell *cell = [[super listTableView] dequeueReusableCellWithIdentifier:@"ListCell"];
-    [cell.favouriteButton setHidden:NO];
+    NTListTableViewCell *cell = [self.listTableView dequeueReusableCellWithIdentifier:@"ListCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.numberLabel.text = [_listViewModel getItemStore][indexPath.row].number;
-    cell.numberLabel.textColor = [_listViewModel getNumberStore].numberList[indexPath.row].color;
-    cell.stringNumberLabel.text = [_listViewModel getItemStore][indexPath.row].numberConvertedTOString;
-    if ([_listViewModel getNumberStore].numberList[indexPath.row].isFavourite){
-        [cell.favouriteButton setImage: super.favouriteImage forState: UIControlStateNormal];
+    cell.numberLabel.text = [_listViewModel getTextForNumberLabel:indexPath.row];
+    cell.numberLabel.textColor = [_listViewModel getTextColorForNumberLabel:indexPath.row];
+    cell.stringNumberLabel.text = [_listViewModel getTextForStringNumberLabel:indexPath.row];
+    
+    if ([_listViewModel getPolarityOfCell:indexPath.row]){
+        [cell.favouriteButton setImage: self.favouriteImage forState: UIControlStateNormal];
     }else {
-        [cell.favouriteButton setImage: super.unFavouriteImage forState: UIControlStateNormal];
+        [cell.favouriteButton setImage: self.unFavouriteImage forState: UIControlStateNormal];
     }
     cell.delegate = self;
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[_listViewModel getItemStore] count]+1;
+    if(_listViewModel.isUnfavouriteViewModel){
+         return [[_listViewModel getItemStore] count]+1;
+    }
+       return [[_listViewModel getItemStore] count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row != [_listViewModel getItemStore].count) {
-        [self performSegueWithIdentifier:@"ShowDetailSegue" sender: self];
-    }else{
-        [_listViewModel addItem];
-        [_listViewModel fillItemStore];
-        [[super listTableView] reloadData];
+    if(_listViewModel.isUnfavouriteViewModel){
+        if (indexPath.row != [_listViewModel getItemStore].count) {
+            [self performSegueWithIdentifier:@"ShowDetailSegue" sender: self];
+        }else{
+            [_listViewModel addItem];
+            [_listViewModel fillItemStore];
+            [self.listTableView reloadData];
+        }
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier  isEqual: @"ShowDetailSegue"]){
         NTListDetailViewController *vc = segue.destinationViewController;
-        NSIndexPath *indexPath = [[super listTableView] indexPathForSelectedRow];
+        NSIndexPath *indexPath = [self.listTableView indexPathForSelectedRow];
         if (indexPath) {
             NTListDetailViewModel* listDetailViewModel = [[NTListDetailViewModel alloc]init];
-            [listDetailViewModel setNumber:[_listViewModel getNumberStore].numberList[indexPath.row].value];
-            [listDetailViewModel setFavourite:[_listViewModel getNumberStore].numberList[indexPath.row].isFavourite];
+            
+            [listDetailViewModel setNumber:[_listViewModel getValuePrepareInformation:indexPath.row]];
+            [listDetailViewModel setFavourite:[_listViewModel getFavouritePrepareInformation:indexPath.row]];
             [listDetailViewModel setUserInfo: [NSString stringWithFormat:@"%ld",(long)indexPath.row]];
             vc.delegate = self;
             vc.listDetailViewModel = listDetailViewModel;
@@ -82,29 +89,21 @@
 
 
 -(void)onClick: (UIButton*)button{
-    CGPoint buttonPosition = [button convertPoint:CGPointZero toView:[super listTableView]];
-    NSIndexPath *indexPath = [[super listTableView] indexPathForRowAtPoint:buttonPosition];
-    if([_listViewModel getNumberStore].numberList[indexPath.row].isFavourite){
-        [_listViewModel setUnfavourite:indexPath.row];
-    }else{
-        [_listViewModel setFavourite:indexPath.row];
-    }
-    [[super listTableView] reloadData];
+    CGPoint buttonPosition = [button convertPoint:CGPointZero toView:self.listTableView];
+    NSIndexPath *indexPath = [self.listTableView indexPathForRowAtPoint:buttonPosition];
+    [_listViewModel processingFavouriteButton:indexPath.row];
+    [self.listTableView reloadData];
     NSLog(@"%ld",(long)indexPath.row);
 }
 
 -(void)onClicBarButton: (BOOL) isFavourite userInfo: (NSInteger) index{
-    if (isFavourite) {
-        [self.listViewModel getNumberStore].numberList[index].isFavourite = NO;
-    }else{
-        [self.listViewModel getNumberStore].numberList[index].isFavourite = YES;
-    }
-}
--(void)save:(float) number userInfo: (NSInteger) index{
-    [self.listViewModel getNumberStore].numberList[index].value = number;
-    [self.navigationController popViewControllerAnimated:YES];
+    [_listViewModel processingFavouriteButton:index];
 }
 
+-(void)save:(float) number userInfo: (NSInteger) index{
+    [self.listViewModel setNumerStoreValue:index value:number];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == [[_listViewModel getItemStore] count]) {
@@ -117,10 +116,18 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[self.listViewModel getNumberStore].numberList removeObjectAtIndex:indexPath.row];
-        [_listViewModel fillItemStore];
-        [[super listTableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_listViewModel deleteNumer:indexPath.row];
+        [self.listTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
+
+- (void)dealloc {
+     [_listTableView release];
+    [super dealloc];
 }
 
 @end

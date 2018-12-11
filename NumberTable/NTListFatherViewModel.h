@@ -10,6 +10,7 @@
 #import "NTSharingFavouriteOrUnfavavourite.h"
 #import "NTNumberConverter.h"
 #import "NTItem.h"
+
 #import "NTNumberStore.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -28,6 +29,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithNumberStore:(NTNumberStore*) numberStore;
 -(NSMutableArray<NSNumber*>*) getIndexes;
+-(NSString*) getTextForNumberLabel:(NSInteger) index;
+-(UIColor*) getTextColorForNumberLabel:(NSInteger) index;
+-(NSString*) getTextForStringNumberLabel:(NSInteger) index;
+-(BOOL) getPolarityOfCell:(NSInteger) index;
+-(float) getValuePrepareInformation:(NSInteger) index;
+-(BOOL) getFavouritePrepareInformation:(NSInteger) index;
+-(void) processingFavouriteButton:(NSInteger) index;
+-(void) setNumerStoreValue:(NSInteger) index value: (float) value;
+-(void) deleteNumer:(NSInteger)index;
+
+@property (nonatomic) BOOL isUnfavouriteViewModel;
 
 @end
 

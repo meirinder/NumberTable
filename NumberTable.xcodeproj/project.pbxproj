@@ -22,10 +22,8 @@
 		C412A77B21AFADAA00708873 /* NTNumberConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A77A21AFADAA00708873 /* NTNumberConverter.m */; };
 		C412A79021B1087700708873 /* NTListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78421B1087600708873 /* NTListDetailViewController.m */; };
 		C412A79121B1087700708873 /* NTListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78721B1087600708873 /* NTListTableViewCell.m */; };
-		C412A79221B1087700708873 /* NTFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78921B1087600708873 /* NTFavouritesViewController.m */; };
 		C412A79321B1087700708873 /* NTStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78B21B1087700708873 /* NTStatsViewController.m */; };
 		C412A79421B1087700708873 /* NTListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78D21B1087700708873 /* NTListViewController.m */; };
-		C412A79521B1087700708873 /* NTListFatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A78F21B1087700708873 /* NTListFatherViewController.m */; };
 		C46256D121B8F18100809B23 /* NTChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D021B8F18100809B23 /* NTChartView.m */; };
 		C46256D421B92F3900809B23 /* NTAddItemToListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D321B92F3900809B23 /* NTAddItemToListTableViewCell.m */; };
 		C46256D721BBADD500809B23 /* NTListFatherViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C46256D621BBADD500809B23 /* NTListFatherViewModel.m */; };
@@ -58,17 +56,13 @@
 		C412A77921AFADAA00708873 /* NTNumberConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTNumberConverter.h; sourceTree = "<group>"; };
 		C412A77A21AFADAA00708873 /* NTNumberConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTNumberConverter.m; sourceTree = "<group>"; };
 		C412A78421B1087600708873 /* NTListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListDetailViewController.m; sourceTree = "<group>"; };
-		C412A78521B1087600708873 /* NTFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTFavouritesViewController.h; sourceTree = "<group>"; };
-		C412A78621B1087600708873 /* NTListFatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListFatherViewController.h; sourceTree = "<group>"; };
 		C412A78721B1087600708873 /* NTListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListTableViewCell.m; sourceTree = "<group>"; };
 		C412A78821B1087600708873 /* NTListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListDetailViewController.h; sourceTree = "<group>"; };
-		C412A78921B1087600708873 /* NTFavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTFavouritesViewController.m; sourceTree = "<group>"; };
 		C412A78A21B1087700708873 /* NTListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListTableViewCell.h; sourceTree = "<group>"; };
 		C412A78B21B1087700708873 /* NTStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTStatsViewController.m; sourceTree = "<group>"; };
 		C412A78C21B1087700708873 /* NTStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTStatsViewController.h; sourceTree = "<group>"; };
 		C412A78D21B1087700708873 /* NTListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListViewController.m; sourceTree = "<group>"; };
 		C412A78E21B1087700708873 /* NTListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTListViewController.h; sourceTree = "<group>"; };
-		C412A78F21B1087700708873 /* NTListFatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTListFatherViewController.m; sourceTree = "<group>"; };
 		C412A79E21B531EA00708873 /* NTNumberTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTNumberTableViewCellDelegate.h; sourceTree = "<group>"; };
 		C46256CE21B8EAC000809B23 /* NTListDetailViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTListDetailViewControllerDelegate.h; sourceTree = "<group>"; };
 		C46256CF21B8F18100809B23 /* NTChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTChartView.h; sourceTree = "<group>"; };
@@ -131,12 +125,8 @@
 		C412A79721B4FDA000708873 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C412A78621B1087600708873 /* NTListFatherViewController.h */,
-				C412A78F21B1087700708873 /* NTListFatherViewController.m */,
 				C412A78E21B1087700708873 /* NTListViewController.h */,
 				C412A78D21B1087700708873 /* NTListViewController.m */,
-				C412A78521B1087600708873 /* NTFavouritesViewController.h */,
-				C412A78921B1087600708873 /* NTFavouritesViewController.m */,
 				C412A78821B1087600708873 /* NTListDetailViewController.h */,
 				C412A78421B1087600708873 /* NTListDetailViewController.m */,
 				C412A78C21B1087700708873 /* NTStatsViewController.h */,
@@ -271,9 +261,7 @@
 				C412A79121B1087700708873 /* NTListTableViewCell.m in Sources */,
 				C412A79321B1087700708873 /* NTStatsViewController.m in Sources */,
 				C412A75321AE97C700708873 /* NTNumberStore.m in Sources */,
-				C412A79221B1087700708873 /* NTFavouritesViewController.m in Sources */,
 				C412A75021AE97A800708873 /* NTNumber.m in Sources */,
-				C412A79521B1087700708873 /* NTListFatherViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

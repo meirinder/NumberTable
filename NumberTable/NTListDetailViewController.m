@@ -48,8 +48,6 @@
 
 - (IBAction)onClickFavouritesBarButtonItem:(UIBarButtonItem *)sender {
 
-    
-    
     [_delegate onClicBarButton: _listDetailViewModel.isFavourite userInfo: [[NSString stringWithFormat:@"%@",_listDetailViewModel.userInfo]integerValue]];
     self.listDetailViewModel.isFavourite = !_listDetailViewModel.isFavourite;
     if (_listDetailViewModel.isFavourite){

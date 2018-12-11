@@ -10,9 +10,9 @@
 #import <CoreData/CoreData.h>
 #import "NTListViewController.h"
 #import "NTListViewModel.h"
-#import "NTFavouritesViewController.h"
 #import "NTStatsViewController.h"
 #import "NTStatsViewModel.h"
+#import "NTFavouritesViewModel.h"
 
 
 

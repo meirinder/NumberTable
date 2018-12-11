@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NTNumberStore *numberStore;
 
 @property (nonatomic,readonly) NSMutableArray<NSNumber*>* indexes;
+
 @end
 
 @implementation NTListFatherViewModel
@@ -24,7 +25,34 @@
 
 -(void)setFavourite:(NSInteger) cell{}
 -(void)setUnfavourite:(NSInteger) cell{}
+-(void) processingFavouriteButton:(NSInteger) index{}
+-(void) setNumerStoreValue:(NSInteger) index value: (float) value{}
+-(void) deleteNumer:(NSInteger)index{}
+-(float) getValuePrepareInformation:(NSInteger) index{
+    return 0;
+}
 
+-(BOOL) getFavouritePrepareInformation:(NSInteger) index{
+    return NO;
+}
+
+-(BOOL) getPolarityOfCell:(NSInteger) index{
+    return NO;
+}
+
+-(NSString*) getTextForStringNumberLabel:(NSInteger) index{
+    return @"";
+}
+
+-(NSString*) getTextForNumberLabel:(NSInteger) index{
+    return _itemStore[index].number;
+}
+
+-(UIColor*) getTextColorForNumberLabel:(NSInteger) index{
+    UIColor *res = [[UIColor alloc]initWithWhite:1 alpha:1 ];
+    [res autorelease];
+    return res;
+}
 -(NSMutableArray<NTItem*>*) getItemStore{
     return self.itemStore;
 }

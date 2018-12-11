@@ -18,6 +18,49 @@
 
 @implementation NTListViewModel
 
+@dynamic isUnfavouriteViewModel;
+
+-(void) processingFavouriteButton:(NSInteger) index{
+    if(_numberStore.numberList[index].isFavourite){
+        [self setUnfavourite:index];
+    }else{
+        [self setFavourite:index];
+    }
+}
+
+-(void) setNumerStoreValue:(NSInteger) index value: (float) value{
+    _numberStore.numberList[index].value = value;
+}
+
+-(void) deleteNumer:(NSInteger)index{
+    [_numberStore.numberList removeObjectAtIndex:index];
+    [self fillItemStore];
+}
+
+-(BOOL) getPolarityOfCell:(NSInteger) index{
+    return _numberStore.numberList[index].isFavourite;
+}
+
+-(float) getValuePrepareInformation:(NSInteger) index{
+    return _numberStore.numberList[index].value;
+}
+
+-(BOOL) getFavouritePrepareInformation:(NSInteger) index{
+    return _numberStore.numberList[index].isFavourite;
+}
+
+-(NSString*) getTextForStringNumberLabel:(NSInteger) index{
+    return _itemStore[index].numberConvertedTOString;
+}
+
+-(NSString*) getTextForNumberLabel:(NSInteger) index{
+    return _itemStore[index].number;
+}
+
+-(UIColor*) getTextColorForNumberLabel:(NSInteger) index{
+    return _numberStore.numberList[index].color;
+}
+
 -(NTNumberStore*) getNumberStore{
     return self.numberStore;
 }
@@ -29,6 +72,7 @@
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore{
     self = [super init];
     if (self) {
+        self.isUnfavouriteViewModel = YES;
         self.numberStore = numberStore;
     }
     return self;

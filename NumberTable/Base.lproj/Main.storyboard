@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favourites View Controller-->
+        <!--List View Controller-->
         <scene sceneID="kvT-dA-Mfv">
             <objects>
-                <viewController id="bp2-0q-W2F" customClass="NTFavouritesViewController" sceneMemberID="viewController">
+                <viewController id="bp2-0q-W2F" customClass="NTListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UHn-p3-H81">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="yZ2-Jd-dNI"/>
                     <connections>
-                        <outlet property="listTableView" destination="4qr-1h-Dm2" id="LNr-h0-xfy"/>
+                        <outlet property="listTableView" destination="4qr-1h-Dm2" id="Ce1-Yz-twc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4q-EM-B6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,7 +264,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjO-rc-Aq2">
                                 <rect key="frame" x="147.5" y="206" width="80" height="30"/>

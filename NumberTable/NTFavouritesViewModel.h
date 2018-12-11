@@ -17,8 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
 -(NTNumberStore*) getNumberStore;
 -(NSMutableArray<NTItem*>*) getItemStore;
 -(void)fillItemStore;
-
+-(NSString*) getTextForNumberLabel:(NSInteger) index;
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore;
+-(UIColor*) getTextColorForNumberLabel:(NSInteger) index;
+-(NSString*) getTextForStringNumberLabel:(NSInteger) index;
+-(BOOL) getPolarityOfCell:(NSInteger) index;
+-(void) processingFavouriteButton:(NSInteger) index;
+-(void) deleteNumer:(NSInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

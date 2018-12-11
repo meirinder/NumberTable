@@ -20,14 +20,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-  //  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSError *error = [[NSError alloc]init ];
+   
     
     NTNumberStore* numberStore = [[NTNumberStore alloc]init];
-    [numberStore fillNumberStore];
-//    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:numberStore requiringSecureCoding:YES error:nil] forKey:@"NumberStore"];
-//    [defaults synchronize];
-   // NSData *data = [NSKeyedArchiver archivedDataWithRootObject:numberStore requiringSecureCoding:YES error:nil];
-  //  numberStore = [NSKeyedUnarchiver unarchivedObjectOfClass: NTNumberStore.class fromData:[defaults objectForKey:@"NumberStore"] error:nil];
+    NSData *numberStoreDataForUnarchive = [[NSData alloc]initWithData: [defaults objectForKey:@"numberStore"]];
+    if (numberStoreDataForUnarchive.length == 0) {
+        [numberStore fillNumberStore];
+        NSMutableArray<NTNumber*>* numberList = numberStore.numberList;
+        NSData* numberStoreDataForArchive = [NSKeyedArchiver archivedDataWithRootObject:numberList requiringSecureCoding:NO error:&error];
+        [defaults setObject:numberStoreDataForArchive forKey:@"numberStore"];
+        [defaults synchronize];
+    }else{
+        NSSet *set = [NSSet setWithArray:@[[NSMutableArray class],[NTNumber class]]];
+        numberStore.numberList = [NSKeyedUnarchiver unarchivedObjectOfClasses: set fromData:numberStoreDataForUnarchive error:&error];
+    }
     
     UIViewController *rootViewController = _window.rootViewController;
     if ([rootViewController isKindOfClass:UITabBarController.class]){
@@ -42,12 +50,12 @@
                 [startListViewModel fillItemStore];
                 listViewController.listViewModel = startListViewModel; //----- MARK: init table
             }
-            if ([rootTabBarController.viewControllers[1] isKindOfClass: NTFavouritesViewController.class]){
-                NTFavouritesViewController *favouriteViewController = rootTabBarController.viewControllers[1];
+            if ([rootTabBarController.viewControllers[1] isKindOfClass: NTListViewController.class]){
+                NTListViewController *favouriteViewController = rootTabBarController.viewControllers[1];
                 NTFavouritesViewModel *startFavouriteViewModel = [[NTFavouritesViewModel alloc]initWithNumberStore:numberStore];
                 [startFavouriteViewModel autorelease];
                 [startFavouriteViewModel fillItemStore];
-                favouriteViewController.favouriteViewModel = startFavouriteViewModel;
+                favouriteViewController.listViewModel = startFavouriteViewModel;
             }
             if([rootTabBarController.viewControllers[2] isKindOfClass:NTStatsViewController.class]){
                 NTStatsViewController* statsViewController = rootTabBarController.viewControllers[2];

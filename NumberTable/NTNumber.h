@@ -14,10 +14,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NTNumber : NSObject
+@interface NTNumber : NSObject <NSCoding, NSSecureCoding>
 
 @property (nonatomic) float value;
-@property (nonatomic, readonly, retain) UIColor *color;
+@property (nonatomic, retain) UIColor *color;
 @property (nonatomic) BOOL isFavourite;
 
 
