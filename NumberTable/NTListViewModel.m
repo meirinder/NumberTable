@@ -13,6 +13,7 @@
 @property (nonatomic,retain) NTItem *item;
 @property (nonatomic, retain) NSMutableArray<NTItem*>* itemStore;
 @property (nonatomic, retain) NTNumberStore *numberStore;
+@property (nonatomic, retain) NTArchiverAndUnarchiver *archiverAndUnarchiver;
 
 @end
 
@@ -28,14 +29,7 @@
     }
 }
 
--(void) setNumerStoreValue:(NSInteger) index value: (float) value{
-    _numberStore.numberList[index].value = value;
-}
 
--(void) deleteNumer:(NSInteger)index{
-    [_numberStore.numberList removeObjectAtIndex:index];
-    [self fillItemStore];
-}
 
 -(BOOL) getPolarityOfCell:(NSInteger) index{
     return _numberStore.numberList[index].isFavourite;
@@ -71,6 +65,7 @@
 
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore{
     self = [super init];
+    _archiverAndUnarchiver = [[NTArchiverAndUnarchiver alloc] init];
     if (self) {
         self.isUnfavouriteViewModel = YES;
         self.numberStore = numberStore;
@@ -91,21 +86,35 @@
 
 - (void)dealloc
 {
+    [_archiverAndUnarchiver release];
     [_item release];
     [_itemStore release];
     [super dealloc];
 }
 
+-(void) setNumerStoreValue:(NSInteger) index value: (float) value{
+    self.numberStore.numberList[index].value = value;
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
+}
+
 -(void)addItem{
     [self.numberStore.numberList addObject: [[NTNumber alloc]init]];
-    
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
+}
+
+-(void) deleteNumer:(NSInteger)index{
+    [_numberStore.numberList removeObjectAtIndex:index];
+    [self fillItemStore];
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(void)setFavourite:(NSInteger) cell{
     self.numberStore.numberList[cell].isFavourite = YES;
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(void)setUnfavourite:(NSInteger) cell{
     self.numberStore.numberList[cell].isFavourite = NO;
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 @end

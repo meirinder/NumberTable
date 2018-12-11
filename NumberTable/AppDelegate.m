@@ -19,22 +19,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSError *error = [[NSError alloc]init ];
-   
     
-    NTNumberStore* numberStore = [[NTNumberStore alloc]init];
-    NSData *numberStoreDataForUnarchive = [[NSData alloc]initWithData: [defaults objectForKey:@"numberStore"]];
-    if (numberStoreDataForUnarchive.length == 0) {
+    
+    NTArchiverAndUnarchiver *archiverAndUnarchiver = [[NTArchiverAndUnarchiver alloc] init];
+    NTNumberStore* numberStore = [[NTNumberStore alloc] init];
+    numberStore.numberList = [archiverAndUnarchiver unarchiveData:@"numberStore"];
+    if (numberStore.numberList.count == 0) {
         [numberStore fillNumberStore];
-        NSMutableArray<NTNumber*>* numberList = numberStore.numberList;
-        NSData* numberStoreDataForArchive = [NSKeyedArchiver archivedDataWithRootObject:numberList requiringSecureCoding:NO error:&error];
-        [defaults setObject:numberStoreDataForArchive forKey:@"numberStore"];
-        [defaults synchronize];
-    }else{
-        NSSet *set = [NSSet setWithArray:@[[NSMutableArray class],[NTNumber class]]];
-        numberStore.numberList = [NSKeyedUnarchiver unarchivedObjectOfClasses: set fromData:numberStoreDataForUnarchive error:&error];
     }
     
     UIViewController *rootViewController = _window.rootViewController;

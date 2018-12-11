@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSMutableArray<NTItem*>* itemStore;
 @property (nonatomic, retain) NTNumberStore *numberStore;
 @property (nonatomic,readonly) NSMutableArray<NSNumber*>* indexes;
+@property (nonatomic, retain) NTArchiverAndUnarchiver *archiverAndUnarchiver;
 
 @end
 
@@ -30,6 +31,7 @@
 -(void) deleteNumer:(NSInteger)index{
     [_numberStore.numberList removeObjectAtIndex:[_indexes[index] integerValue]];
     [self fillItemStore];
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(BOOL) getPolarityOfCell:(NSInteger) index{
@@ -50,6 +52,7 @@
 
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore{
     self = [super init];
+    _archiverAndUnarchiver = [[NTArchiverAndUnarchiver alloc] init];
     if (self) {
         self.numberStore = numberStore;
         self.isUnfavouriteViewModel = NO;
@@ -84,6 +87,7 @@
 
 - (void)dealloc
 {
+    [_archiverAndUnarchiver release];
     [_favouriteItem release];
     [_itemStore release];
     [super dealloc];
@@ -91,10 +95,12 @@
 
 -(void)setFavourite:(NSInteger) cell{
     self.numberStore.numberList[cell].isFavourite = YES;
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(void)setUnfavourite:(NSInteger) cell{
     self.numberStore.numberList[cell].isFavourite = NO;
+    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 

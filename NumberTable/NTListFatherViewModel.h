@@ -10,6 +10,8 @@
 #import "NTSharingFavouriteOrUnfavavourite.h"
 #import "NTNumberConverter.h"
 #import "NTItem.h"
+#import "NTArchiverAndUnarchiver.h"
+
 
 #import "NTNumberStore.h"
 
