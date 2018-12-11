@@ -24,7 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL) getPolarityOfCell:(NSInteger) index;
 -(void) processingFavouriteButton:(NSInteger) index;
 -(void) deleteNumer:(NSInteger)index;
-
+-(BOOL) canDeleteNumber;
+-(BOOL) canUnfavouriteNumberWithoutButton;
+-(BOOL) canChangeNumber;
+-(BOOL) canAddNumber;
 @end
 
 NS_ASSUME_NONNULL_END

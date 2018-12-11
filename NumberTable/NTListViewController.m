@@ -32,7 +32,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ((indexPath.row == [_listViewModel getItemStore].count)&&(_listViewModel.isUnfavouriteViewModel)) {
+    if ((indexPath.row == [_listViewModel getItemStore].count)&&([_listViewModel canAddNumber])) {
         NTAddItemToListTableViewCell *addCell = [self.listTableView dequeueReusableCellWithIdentifier:@"AddCell"];
         return addCell;
     }
@@ -52,14 +52,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(_listViewModel.isUnfavouriteViewModel){
+    if([_listViewModel canAddNumber]){
          return [[_listViewModel getItemStore] count]+1;
     }
        return [[_listViewModel getItemStore] count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(_listViewModel.isUnfavouriteViewModel){
+    if([_listViewModel canChangeNumber]){
         if (indexPath.row != [_listViewModel getItemStore].count) {
             [self performSegueWithIdentifier:@"ShowDetailSegue" sender: self];
         }else{
@@ -112,14 +112,30 @@
     return YES;
 }
 
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    
+    UITableViewRowAction *unfavouriteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Unfavourite" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        [_listViewModel processingFavouriteButton:indexPath.row];
+        [_listViewModel fillItemStore];
+        [_listTableView reloadData];
+    }];
+    unfavouriteAction.backgroundColor = [UIColor blueColor];
+    
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Delete"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         [_listViewModel deleteNumer:indexPath.row];
-        [self.listTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.listTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];    }];
+    deleteAction.backgroundColor = [UIColor redColor];
+    if(([_listViewModel canDeleteNumber])&&([_listViewModel canUnfavouriteNumberWithoutButton])){
+        return @[deleteAction,unfavouriteAction];
+    }else if ([_listViewModel canDeleteNumber]) {
+        return @[deleteAction];
+    }else if([_listViewModel canUnfavouriteNumberWithoutButton]){
+        return @[unfavouriteAction];
     }
+    return @[];
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;

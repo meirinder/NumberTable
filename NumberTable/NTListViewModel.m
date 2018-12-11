@@ -13,13 +13,12 @@
 @property (nonatomic,retain) NTItem *item;
 @property (nonatomic, retain) NSMutableArray<NTItem*>* itemStore;
 @property (nonatomic, retain) NTNumberStore *numberStore;
-@property (nonatomic, retain) NTArchiverAndUnarchiver *archiverAndUnarchiver;
+@property (nonatomic, retain) NTUserDafaultsWorker *userDefaultsWorker;
 
 @end
 
 @implementation NTListViewModel
 
-@dynamic isUnfavouriteViewModel;
 
 -(void) processingFavouriteButton:(NSInteger) index{
     if(_numberStore.numberList[index].isFavourite){
@@ -65,9 +64,8 @@
 
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore{
     self = [super init];
-    _archiverAndUnarchiver = [[NTArchiverAndUnarchiver alloc] init];
+    _userDefaultsWorker = [[NTUserDafaultsWorker alloc] init];
     if (self) {
-        self.isUnfavouriteViewModel = YES;
         self.numberStore = numberStore;
     }
     return self;
@@ -85,7 +83,7 @@
 
 - (void)dealloc
 {
-    [_archiverAndUnarchiver release];
+    [_userDefaultsWorker release];
     [_item release];
     [_itemStore release];
     [super dealloc];
@@ -93,29 +91,45 @@
 
 -(void) setNumerStoreValue:(NSInteger) index value: (float) value{
     self.numberStore.numberList[index].value = value;
-    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(void)addItem{
     NTNumber *object = [[NTNumber alloc]init];
     [self.numberStore.numberList addObject: object];
     [object autorelease];
-    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(void) deleteNumer:(NSInteger)index{
     [_numberStore.numberList removeObjectAtIndex:index];
     [self fillItemStore];
-    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(void)setFavourite:(NSInteger) cell{
     self.numberStore.numberList[cell].isFavourite = YES;
-    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
 -(void)setUnfavourite:(NSInteger) cell{
     self.numberStore.numberList[cell].isFavourite = NO;
-    [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
+- (BOOL)canDeleteNumber { 
+    return YES;
+}
+
+- (BOOL)canUnfavouriteNumberWithoutButton { 
+    return NO;
+}
+
+- (BOOL)canChangeNumber { 
+    return YES;
+}
+
+- (BOOL)canAddNumber { 
+    return YES;
+}
+
 @end

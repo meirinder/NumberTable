@@ -21,10 +21,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
-    NTArchiverAndUnarchiver *archiverAndUnarchiver = [[NTArchiverAndUnarchiver alloc] init];
+    NTUserDafaultsWorker *userDefaultsWorker = [[NTUserDafaultsWorker alloc] init];
     NTNumberStore* numberStore = [[NTNumberStore alloc] init];
     [numberStore autorelease];
-    numberStore.numberList = [archiverAndUnarchiver unarchiveData:@"numberStore"];
+    numberStore.numberList = [userDefaultsWorker unarchiveData:@"numberStore"];
     if (numberStore.numberList.count == 0) {
         [numberStore fillNumberStore];
     }

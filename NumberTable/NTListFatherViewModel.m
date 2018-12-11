@@ -68,4 +68,20 @@
     
 }
 
+- (BOOL)canDeleteNumber { 
+    return NO;
+}
+
+- (BOOL)canUnfavouriteNumberWithoutButton { 
+    return NO;
+}
+
+- (BOOL)canChangeNumber { 
+    return NO;
+}
+
+- (BOOL)canAddNumber { 
+    return NO;
+}
+
 @end

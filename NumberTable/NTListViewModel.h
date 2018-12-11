@@ -29,7 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) processingFavouriteButton:(NSInteger) index;
 -(void) setNumerStoreValue:(NSInteger) index value: (float) value;
 -(void) deleteNumer:(NSInteger)index;
-
+-(BOOL) canDeleteNumber;
+-(BOOL) canUnfavouriteNumberWithoutButton;
+-(BOOL) canChangeNumber;
+-(BOOL) canAddNumber;
 -(instancetype)initWithNumberStore:(NTNumberStore*) numberStore;
 @end
 

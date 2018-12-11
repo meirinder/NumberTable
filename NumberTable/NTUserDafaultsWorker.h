@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NTArchiverAndUnarchiver : NSObject
+@interface NTUserDafaultsWorker : NSObject
 
 -(void)archiveData:(NSMutableArray<NTNumber*>*)numberList forKey:(NSString*) key;
 -(NSMutableArray<NTNumber*>*)unarchiveData:(NSString*) key;

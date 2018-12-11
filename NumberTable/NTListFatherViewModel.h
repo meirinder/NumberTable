@@ -10,7 +10,7 @@
 #import "NTSharingFavouriteOrUnfavavourite.h"
 #import "NTNumberConverter.h"
 #import "NTItem.h"
-#import "NTArchiverAndUnarchiver.h"
+#import "NTUserDafaultsWorker.h"
 
 
 #import "NTNumberStore.h"
@@ -40,8 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) processingFavouriteButton:(NSInteger) index;
 -(void) setNumerStoreValue:(NSInteger) index value: (float) value;
 -(void) deleteNumer:(NSInteger)index;
+-(BOOL) canDeleteNumber;
+-(BOOL) canUnfavouriteNumberWithoutButton;
+-(BOOL) canChangeNumber;
+-(BOOL) canAddNumber;
 
-@property (nonatomic) BOOL isUnfavouriteViewModel;
+//@property (nonatomic) BOOL canAddNumber;
 
 @end
 
