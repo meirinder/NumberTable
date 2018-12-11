@@ -87,6 +87,7 @@
 
 - (void)dealloc
 {
+    [_indexes release];
     [_archiverAndUnarchiver release];
     [_favouriteItem release];
     [_itemStore release];

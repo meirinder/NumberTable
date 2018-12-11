@@ -23,6 +23,7 @@
     
     NTArchiverAndUnarchiver *archiverAndUnarchiver = [[NTArchiverAndUnarchiver alloc] init];
     NTNumberStore* numberStore = [[NTNumberStore alloc] init];
+    [numberStore autorelease];
     numberStore.numberList = [archiverAndUnarchiver unarchiveData:@"numberStore"];
     if (numberStore.numberList.count == 0) {
         [numberStore fillNumberStore];

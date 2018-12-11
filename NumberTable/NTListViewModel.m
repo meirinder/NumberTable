@@ -75,9 +75,9 @@
 
 -(void)fillItemStore{
     self.itemStore = [[NSMutableArray alloc]init];
+    
     for (NTNumber* ntNumber in _numberStore.numberList) {
         self.item = [[NTItem alloc] initWithFloat: ntNumber.value];
-        
         
         [_itemStore addObject:_item];
     }
@@ -98,7 +98,9 @@
 }
 
 -(void)addItem{
-    [self.numberStore.numberList addObject: [[NTNumber alloc]init]];
+    NTNumber *object = [[NTNumber alloc]init];
+    [self.numberStore.numberList addObject: object];
+    [object autorelease];
     [_archiverAndUnarchiver archiveData: self.numberStore.numberList forKey:@"numberStore"];
 }
 
