@@ -26,13 +26,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [_statsViewModel analyze];
-    self.minimumLabel.text = _statsViewModel.minimum;
-    self.maximumLabel.text = _statsViewModel.maximum;
-    self.averageLabel.text = _statsViewModel.average;
-    _chartView.values = [_statsViewModel prepareChartInformation: (int)_chartOptionsSlider.value];
-    [_chartView setNeedsDisplay];
-    _sliderValueLabel.text = [NSString stringWithFormat:@"%d",(int)_chartOptionsSlider.value];
+    [self.statsViewModel analyze];
+    self.minimumLabel.text = self.statsViewModel.minimum;
+    self.maximumLabel.text = self.statsViewModel.maximum;
+    self.averageLabel.text = self.statsViewModel.average;
+    self.chartView.values = [self.statsViewModel prepareChartInformation: (int)self.chartOptionsSlider.value];
+    [self.chartView setNeedsDisplay];
+    self.sliderValueLabel.text = [NSString stringWithFormat:@"%d",(int)self.chartOptionsSlider.value];
 }
 
 - (void)viewDidLoad {
@@ -42,9 +42,9 @@
 }
 
 - (IBAction)changeSliderValue:(UISlider *)sender{
-    _sliderValueLabel.text = [NSString stringWithFormat:@"%d",(int)_chartOptionsSlider.value];
-    _chartView.values = [_statsViewModel prepareChartInformation: (int)_chartOptionsSlider.value];
-    [_chartView setNeedsDisplay];
+    self.sliderValueLabel.text = [NSString stringWithFormat:@"%d",(int)self.chartOptionsSlider.value];
+    self.chartView.values = [self.statsViewModel prepareChartInformation: (int)self.chartOptionsSlider.value];
+    [self.chartView setNeedsDisplay];
 }
 
 

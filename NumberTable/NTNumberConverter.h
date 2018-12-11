@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NTNumberConverter : NSObject
 
-
-
 -(NSString*) convertFloatToWords: (float) number;
 
 @end

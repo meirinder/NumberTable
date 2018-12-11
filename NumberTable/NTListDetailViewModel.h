@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL isFavourite;
 
 -(void) setFavourite: (BOOL) value;
+
 @end
 
 NS_ASSUME_NONNULL_END

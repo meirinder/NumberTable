@@ -15,7 +15,6 @@
 
 @implementation NTStatsViewModel
 
-
 -(NTNumberStore*) getNumberStore{
     return self.numberStore;
 }
@@ -33,7 +32,7 @@
     float minimum = 100;
 
     float sum = 0;
-    for (NTNumber *number in _numberStore.numberList) {
+    for (NTNumber *number in self.numberStore.numberList) {
         sum += number.value;
         if (number.value > maximum){
             maximum = number.value;
@@ -44,7 +43,7 @@
     }
     self.maximum = [NSString stringWithFormat:@"%f",maximum];
     self.minimum = [NSString stringWithFormat:@"%f",minimum];
-    self.average = [NSString stringWithFormat:@"%f",sum / _numberStore.numberList.count];
+    self.average = [NSString stringWithFormat:@"%f",sum / self.numberStore.numberList.count];
 }
 
 -(NSMutableArray*)prepareChartInformation:(int)partsCount{
@@ -56,11 +55,11 @@
     float part = 200 / partsCount;
     float botBound;
     float topBound;
-    for (int j = 0; j < _numberStore.numberList.count; j++) {
+    for (int j = 0; j < self.numberStore.numberList.count; j++) {
         for (int i = 0; i < partsCount; i++) {
             topBound = -100+part*(i+1);
             botBound = -100+part*i;
-            if ((_numberStore.numberList[j].value >= botBound)&&(_numberStore.numberList[j].value < topBound)) {
+            if ((self.numberStore.numberList[j].value >= botBound)&&(self.numberStore.numberList[j].value < topBound)) {
                 int tmp = [[res objectAtIndex:i] intValue];
                 tmp++;
                 [res setObject:[NSNumber numberWithInteger:tmp] atIndexedSubscript:i];

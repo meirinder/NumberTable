@@ -29,9 +29,9 @@
         [numberStore fillNumberStore];
     }
     
-    UIViewController *rootViewController = _window.rootViewController;
+    UIViewController *rootViewController = self.window.rootViewController;
     if ([rootViewController isKindOfClass:UITabBarController.class]){
-        UITabBarController* rootTabBarController = (UITabBarController*)_window.rootViewController;
+        UITabBarController* rootTabBarController = (UITabBarController*)self.window.rootViewController;
         if ([rootTabBarController.viewControllers[0] isKindOfClass:UINavigationController.class ] )
         {
             UINavigationController *nav = rootTabBarController.childViewControllers[0];

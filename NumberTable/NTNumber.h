@@ -20,9 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) UIColor *color;
 @property (nonatomic) BOOL isFavourite;
 
-
-
-
 @end
 
 NS_ASSUME_NONNULL_END

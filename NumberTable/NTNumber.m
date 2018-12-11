@@ -7,26 +7,26 @@
 //
 
 #import "NTNumber.h"
+@interface NTNumber()
 
+@property (nonatomic)float const MAX_FLOAT;
+@property (nonatomic)float const MIN_FLOAT;
 
+@end
 
 @implementation NTNumber
-
-float const MAX_FLOAT = 99.99f;
-float const MIN_FLOAT = -99.99f;
-
-
 
 + (BOOL)supportsSecureCoding
 {
     return YES;
 }
 
-
 -(id)init{
     self = [super init];
     if (self){
-        [self setValue: [self randomFloatBetween: MIN_FLOAT and: MAX_FLOAT]];
+        self.MAX_FLOAT = 99.99f;
+        self.MIN_FLOAT = -99.99f;
+        [self setValue: [self randomFloatBetween: self.MIN_FLOAT and: self.MAX_FLOAT]];
         self.color = [UIColor colorWithHue:[self randomFloatBetween:0 and:1] saturation:1 brightness:1 alpha:1];
         [_color retain];
         [self setIsFavourite: NO];
@@ -46,16 +46,15 @@ float const MIN_FLOAT = -99.99f;
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
-    [aCoder encodeFloat:_value forKey:@"value"];
-    [aCoder encodeObject:_color forKey:@"color"];
-    [aCoder encodeBool:_isFavourite forKey:@"isFavourite"];
+    [aCoder encodeFloat:self.value forKey:@"value"];
+    [aCoder encodeObject:self.color forKey:@"color"];
+    [aCoder encodeBool:self.isFavourite forKey:@"isFavourite"];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
     if (self = [super init]){
         self.value = [aDecoder decodeFloatForKey:@"value"];
         self.color = [aDecoder decodeObjectOfClass:UIColor.class forKey:@"color"];
-//        self.color = [aDecoder decodeObjectForKey:@"color"];
         self.isFavourite = [aDecoder decodeBoolForKey:@"isFavourite"];
     }
     return self;

@@ -19,24 +19,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NTListFatherViewModel : NSObject
 
-
 -(void) addItem;
 -(void) fillItemStore;
-
 -(void)setFavourite:(NSInteger) cell;
 -(void)setUnfavourite:(NSInteger) cell;
-
--(NSMutableArray<NTItem*>*) getItemStore;
--(NTNumberStore*) getNumberStore;
-
+-(NSArray<NTItem*>*) itemStore;
+-(NTNumberStore*) numberStore;
 -(instancetype)initWithNumberStore:(NTNumberStore*) numberStore;
--(NSMutableArray<NSNumber*>*) getIndexes;
--(NSString*) getTextForNumberLabel:(NSInteger) index;
--(UIColor*) getTextColorForNumberLabel:(NSInteger) index;
--(NSString*) getTextForStringNumberLabel:(NSInteger) index;
--(BOOL) getPolarityOfCell:(NSInteger) index;
--(float) getValuePrepareInformation:(NSInteger) index;
--(BOOL) getFavouritePrepareInformation:(NSInteger) index;
+-(NSArray<NSNumber*>*) getIndexes;
+-(NSString*) textForNumberLabel:(NSInteger) index;
+-(UIColor*) textColorForNumberLabel:(NSInteger) index;
+-(NSString*) textForStringNumberLabel:(NSInteger) index;
+-(BOOL) polarityOfCell:(NSInteger) index;
+-(float) valuePrepareInformation:(NSInteger) index;
+-(BOOL) favouritePrepareInformation:(NSInteger) index;
 -(void) processingFavouriteButton:(NSInteger) index;
 -(void) setNumerStoreValue:(NSInteger) index value: (float) value;
 -(void) deleteNumer:(NSInteger)index;
@@ -44,8 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL) canUnfavouriteNumberWithoutButton;
 -(BOOL) canChangeNumber;
 -(BOOL) canAddNumber;
-
-//@property (nonatomic) BOOL canAddNumber;
 
 @end
 

@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain) NSString* number;
 @property (nonatomic, retain) NSString* numberConvertedTOString;
+
 - (NSString *)toString: (float) number;
 -(instancetype)initWithFloat:(float)outNumber;
-
 
 @end
 

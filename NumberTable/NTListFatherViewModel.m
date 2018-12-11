@@ -11,9 +11,8 @@
 @interface NTListFatherViewModel ()
 
 @property (nonatomic,retain) NTItem *favouriteItem;
-@property (nonatomic, retain) NSMutableArray<NTItem*>* itemStore;
-@property (nonatomic, retain) NTNumberStore *numberStore;
-
+@property (nonatomic, retain) NSMutableArray<NTItem*>* itemList;
+@property (nonatomic, retain) NTNumberStore *numberList;
 @property (nonatomic,readonly) NSMutableArray<NSNumber*>* indexes;
 
 @end
@@ -22,50 +21,51 @@
 
 -(void) addItem{}
 -(void) fillItemStore{}
-
--(void)setFavourite:(NSInteger) cell{}
--(void)setUnfavourite:(NSInteger) cell{}
+-(void) setFavourite:(NSInteger) cell{}
+-(void) setUnfavourite:(NSInteger) cell{}
 -(void) processingFavouriteButton:(NSInteger) index{}
 -(void) setNumerStoreValue:(NSInteger) index value: (float) value{}
 -(void) deleteNumer:(NSInteger)index{}
--(float) getValuePrepareInformation:(NSInteger) index{
+
+-(float) valuePrepareInformation:(NSInteger) index{
     return 0;
 }
 
--(BOOL) getFavouritePrepareInformation:(NSInteger) index{
+-(BOOL) favouritePrepareInformation:(NSInteger) index{
     return NO;
 }
 
--(BOOL) getPolarityOfCell:(NSInteger) index{
+-(BOOL) polarityOfCell:(NSInteger) index{
     return NO;
 }
 
--(NSString*) getTextForStringNumberLabel:(NSInteger) index{
+-(NSString*) textForStringNumberLabel:(NSInteger) index{
     return @"";
 }
 
--(NSString*) getTextForNumberLabel:(NSInteger) index{
-    return _itemStore[index].number;
+-(NSString*) textForNumberLabel:(NSInteger) index{
+    return [self.itemList[index].number copy];
 }
 
--(UIColor*) getTextColorForNumberLabel:(NSInteger) index{
+-(UIColor*) textColorForNumberLabel:(NSInteger) index{
     UIColor *res = [[UIColor alloc]initWithWhite:1 alpha:1 ];
     [res autorelease];
-    return res;
+    return [res copy];
 }
--(NSMutableArray<NTItem*>*) getItemStore{
-    return self.itemStore;
+
+-(NSArray<NTItem*>*) itemStore{
+    return [self.itemList copy];
 }
--(NTNumberStore*) getNumberStore{
-    return self.numberStore;
+
+-(NTNumberStore*) numberStore{
+    return self.numberList;
 }
 
 -(instancetype)initWithNumberStore:(NTNumberStore*) numberStore{
     return self;
 }
--(NSMutableArray<NSNumber*>*) getIndexes{
-    return self.indexes;
-    
+-(NSArray<NSNumber*>*) getIndexes{
+    return [self.indexes copy];
 }
 
 - (BOOL)canDeleteNumber { 

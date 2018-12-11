@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)archiveData:(NSMutableArray<NTNumber*>*)numberList forKey:(NSString*) key;
 -(NSMutableArray<NTNumber*>*)unarchiveData:(NSString*) key;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

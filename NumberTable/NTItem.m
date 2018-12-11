@@ -7,27 +7,23 @@
 //
 
 #import "NTItem.h"
+@interface NTItem ()
+
+@property (nonatomic, retain) NTNumberConverter* numberConverter;
+
+@end
 
 @implementation NTItem
-
-
-NTNumberConverter* numberConverter;
-
-
-//@synthesize number,numberConvertedTOString,isFavourite;
-
-
 
 
 -(instancetype)initWithFloat:(float)outNumber{
     self = [super init];
     if (self) {
-        numberConverter = [[NTNumberConverter alloc]init];
+        self.numberConverter = [[NTNumberConverter alloc]init];
         self.number = [self toString: outNumber];
         [_number retain];
-        self.numberConvertedTOString = [numberConverter convertFloatToWords:outNumber];
+        self.numberConvertedTOString = [self.numberConverter convertFloatToWords:outNumber];
         [_numberConvertedTOString retain];
-        [numberConverter release];
     }
     return self;
 }
@@ -36,8 +32,8 @@ NTNumberConverter* numberConverter;
     return [NSString stringWithFormat: @"%f",number];
 }
 
-- (void)dealloc
-{
+- (void)dealloc{
+    [_numberConverter release];
     [_numberConvertedTOString release];
     [_number release];
     [super dealloc];

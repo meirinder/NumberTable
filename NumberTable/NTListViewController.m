@@ -21,7 +21,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [_listViewModel fillItemStore];
+    [self.listViewModel fillItemStore];
     [self.listTableView reloadData];
 }
 
@@ -32,17 +32,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ((indexPath.row == [_listViewModel getItemStore].count)&&([_listViewModel canAddNumber])) {
+    if ((indexPath.row == [self.listViewModel itemStore].count)&&([self.listViewModel canAddNumber])) {
         NTAddItemToListTableViewCell *addCell = [self.listTableView dequeueReusableCellWithIdentifier:@"AddCell"];
         return addCell;
     }
     NTListTableViewCell *cell = [self.listTableView dequeueReusableCellWithIdentifier:@"ListCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.numberLabel.text = [_listViewModel getTextForNumberLabel:indexPath.row];
-    cell.numberLabel.textColor = [_listViewModel getTextColorForNumberLabel:indexPath.row];
-    cell.stringNumberLabel.text = [_listViewModel getTextForStringNumberLabel:indexPath.row];
+    cell.numberLabel.text = [self.listViewModel textForNumberLabel:indexPath.row];
+    cell.numberLabel.textColor = [self.listViewModel textColorForNumberLabel:indexPath.row];
+    cell.stringNumberLabel.text = [self.listViewModel textForStringNumberLabel:indexPath.row];
     
-    if ([_listViewModel getPolarityOfCell:indexPath.row]){
+    if ([self.listViewModel polarityOfCell:indexPath.row]){
         [cell.favouriteButton setImage: self.favouriteImage forState: UIControlStateNormal];
     }else {
         [cell.favouriteButton setImage: self.unFavouriteImage forState: UIControlStateNormal];
@@ -52,19 +52,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if([_listViewModel canAddNumber]){
-         return [[_listViewModel getItemStore] count]+1;
+    if([self.listViewModel canAddNumber]){
+         return [[self.listViewModel itemStore] count]+1;
     }
-       return [[_listViewModel getItemStore] count];
+       return [[self.listViewModel itemStore] count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([_listViewModel canChangeNumber]){
-        if (indexPath.row != [_listViewModel getItemStore].count) {
+    if([self.listViewModel canChangeNumber]){
+        if (indexPath.row != [self.listViewModel itemStore].count) {
             [self performSegueWithIdentifier:@"ShowDetailSegue" sender: self];
         }else{
-            [_listViewModel addItem];
-            [_listViewModel fillItemStore];
+            [self.listViewModel addItem];
+            [self.listViewModel fillItemStore];
             [self.listTableView reloadData];
         }
     }
@@ -77,8 +77,8 @@
         if (indexPath) {
             NTListDetailViewModel* listDetailViewModel = [[NTListDetailViewModel alloc]init];
             
-            [listDetailViewModel setNumber:[_listViewModel getValuePrepareInformation:indexPath.row]];
-            [listDetailViewModel setFavourite:[_listViewModel getFavouritePrepareInformation:indexPath.row]];
+            [listDetailViewModel setNumber:[self.listViewModel valuePrepareInformation:indexPath.row]];
+            [listDetailViewModel setFavourite:[self.listViewModel favouritePrepareInformation:indexPath.row]];
             [listDetailViewModel setUserInfo: [NSString stringWithFormat:@"%ld",(long)indexPath.row]];
             vc.delegate = self;
             vc.listDetailViewModel = listDetailViewModel;
@@ -91,13 +91,13 @@
 -(void)onClick: (UIButton*)button{
     CGPoint buttonPosition = [button convertPoint:CGPointZero toView:self.listTableView];
     NSIndexPath *indexPath = [self.listTableView indexPathForRowAtPoint:buttonPosition];
-    [_listViewModel processingFavouriteButton:indexPath.row];
+    [self.listViewModel processingFavouriteButton:indexPath.row];
+    [self.listViewModel fillItemStore];
     [self.listTableView reloadData];
-    NSLog(@"%ld",(long)indexPath.row);
 }
 
 -(void)onClicBarButton: (BOOL) isFavourite userInfo: (NSInteger) index{
-    [_listViewModel processingFavouriteButton:index];
+    [self.listViewModel processingFavouriteButton:index];
 }
 
 -(void)save:(float) number userInfo: (NSInteger) index{
@@ -106,7 +106,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == [[_listViewModel getItemStore] count]) {
+    if (indexPath.row == [[self.listViewModel itemStore] count]) {
         return  NO;
     }
     return YES;
@@ -116,21 +116,21 @@
     
     
     UITableViewRowAction *unfavouriteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Unfavourite" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-        [_listViewModel processingFavouriteButton:indexPath.row];
-        [_listViewModel fillItemStore];
-        [_listTableView reloadData];
+        [self.listViewModel processingFavouriteButton:indexPath.row];
+        [self.listViewModel fillItemStore];
+        [self.listTableView reloadData];
     }];
     unfavouriteAction.backgroundColor = [UIColor blueColor];
     
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Delete"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-        [_listViewModel deleteNumer:indexPath.row];
+        [self.listViewModel deleteNumer:indexPath.row];
         [self.listTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];    }];
     deleteAction.backgroundColor = [UIColor redColor];
-    if(([_listViewModel canDeleteNumber])&&([_listViewModel canUnfavouriteNumberWithoutButton])){
+    if(([self.listViewModel canDeleteNumber])&&([self.listViewModel canUnfavouriteNumberWithoutButton])){
         return @[deleteAction,unfavouriteAction];
-    }else if ([_listViewModel canDeleteNumber]) {
+    }else if ([self.listViewModel canDeleteNumber]) {
         return @[deleteAction];
-    }else if([_listViewModel canUnfavouriteNumberWithoutButton]){
+    }else if([self.listViewModel canUnfavouriteNumberWithoutButton]){
         return @[unfavouriteAction];
     }
     return @[];
@@ -142,7 +142,7 @@
 }
 
 - (void)dealloc {
-     [_listTableView release];
+    [_listTableView release];
     [super dealloc];
 }
 

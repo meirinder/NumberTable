@@ -27,11 +27,11 @@
     [super viewDidLoad];
     self.favouriteImage = [UIImage imageNamed:@"favourite.png"];
     self.unFavouriteImage = [UIImage imageNamed:@"unfavourite.png"];
-    self.changeTextField.text = [NSString stringWithFormat:@"%f", _listDetailViewModel.number];
-    if (_listDetailViewModel.isFavourite){
-        [_favouritesBarButtonItem setImage: _favouriteImage];
+    self.changeTextField.text = [NSString stringWithFormat:@"%f", self.listDetailViewModel.number];
+    if (self.listDetailViewModel.isFavourite){
+        [self.favouritesBarButtonItem setImage: self.favouriteImage];
     }else{
-        [_favouritesBarButtonItem setImage: _unFavouriteImage];
+        [self.favouritesBarButtonItem setImage: self.unFavouriteImage];
     }
 }
 
@@ -42,18 +42,19 @@
     [_favouritesBarButtonItem release];
     [super dealloc];
 }
+
 - (IBAction)saveAction:(UIButton *)sender {
-    [_delegate save: [_changeTextField.text floatValue] userInfo: [[NSString stringWithFormat:@"%@",_listDetailViewModel.userInfo]integerValue]];
+    [self.delegate save: [self.changeTextField.text floatValue] userInfo: [[NSString stringWithFormat:@"%@",self.listDetailViewModel.userInfo]integerValue]];
 }
 
 - (IBAction)onClickFavouritesBarButtonItem:(UIBarButtonItem *)sender {
 
-    [_delegate onClicBarButton: _listDetailViewModel.isFavourite userInfo: [[NSString stringWithFormat:@"%@",_listDetailViewModel.userInfo]integerValue]];
-    self.listDetailViewModel.isFavourite = !_listDetailViewModel.isFavourite;
-    if (_listDetailViewModel.isFavourite){
-        [_favouritesBarButtonItem setImage: _favouriteImage];
+    [self.delegate onClicBarButton: self.listDetailViewModel.isFavourite userInfo: [[NSString stringWithFormat:@"%@",self.listDetailViewModel.userInfo]integerValue]];
+    self.listDetailViewModel.isFavourite = !self.listDetailViewModel.isFavourite;
+    if (self.listDetailViewModel.isFavourite){
+        [self.favouritesBarButtonItem setImage: self.favouriteImage];
     }else{
-        [_favouritesBarButtonItem setImage: _unFavouriteImage];
+        [self.favouritesBarButtonItem setImage: self.unFavouriteImage];
     }
 }
 @end

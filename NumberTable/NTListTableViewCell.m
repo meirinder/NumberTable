@@ -30,6 +30,6 @@
     [super dealloc];
 }
 - (IBAction)onClickFavouriteButton:(UIButton *)sender {
-    [_delegate onClick:sender];
+    [self.delegate onClick:sender];
 }
 @end

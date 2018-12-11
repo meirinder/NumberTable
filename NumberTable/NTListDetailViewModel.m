@@ -18,7 +18,4 @@
     self.isFavourite = value;
 }
 
-
-
-
 @end

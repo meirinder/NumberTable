@@ -7,29 +7,27 @@
 //
 
 #import "NTNumberStore.h"
+@interface NTNumberStore()
+
+@property (nonatomic)int const minCountOfNumbers;
+@property (nonatomic)int const placeholderSize;
+
+@end
 
 @implementation NTNumberStore
 
-int const minCountOfNumbers = 3;
-int const placeholderSize = 5;
-
-
-
-
 -(void)fillNumberStore{
+    self.minCountOfNumbers = 3;
+    self.placeholderSize = 5;
     self.numberList = [[NSMutableArray alloc]init];
-    for (int i = 0; i < arc4random_uniform(placeholderSize)+minCountOfNumbers; i++) {
+    for (int i = 0; i < arc4random_uniform(self.placeholderSize)+self.minCountOfNumbers; i++) {
         NTNumber *newNumber = [[NTNumber alloc]init];
-        [_numberList addObject: newNumber];
+        [self.numberList addObject: newNumber];
         [newNumber release];
     }
 }
 
-
-
-
-- (void)dealloc
-{
+- (void)dealloc{
     [_numberList release];
     [super dealloc];
 }

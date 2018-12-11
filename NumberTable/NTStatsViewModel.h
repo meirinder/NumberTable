@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSString* maximum;
 
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore;
-
 -(NTNumberStore*) getNumberStore;
 -(void)analyze;
 -(NSMutableArray*)prepareChartInformation:(int)partsCount;

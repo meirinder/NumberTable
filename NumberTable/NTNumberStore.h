@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NTNumberStore : NSObject 
 
 @property (nonatomic,retain) NSMutableArray<NTNumber*>* numberList;
+
 -(void)fillNumberStore;
 
 @end

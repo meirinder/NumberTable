@@ -8,45 +8,46 @@
 
 #import "NTNumberConverter.h"
 
-@implementation NTNumberConverter
+@interface NTNumberConverter()
 
-NSArray* upToTen;
-NSArray* upToNinety;
-NSArray* fromTenToTwenty;
-NSArray* fractional;
-NSString* minus;
+@property (nonatomic, retain)NSArray* upToTen;
+@property (nonatomic, retain)NSArray* upToNinety;
+@property (nonatomic, retain)NSArray* fromTenToTwenty;
+@property (nonatomic, retain)NSArray* fractional;
+@property (nonatomic, retain)NSString* minus;
+
+@end
+
+@implementation NTNumberConverter
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        upToTen = [NSArray arrayWithObjects:@"Ноль", @"Один", @"Два", @"Три", @"Четыре", @"Пять",
+        self.upToTen = [NSArray arrayWithObjects:@"Ноль", @"Один", @"Два", @"Три", @"Четыре", @"Пять",
                    @"Шесть", @"Семь", @"Восемь", @"Девять", nil];
-        upToNinety = [NSArray arrayWithObjects:@"Двадцать", @"Тридцать", @"Сорок", @"Пятьдесят",
+        self.upToNinety = [NSArray arrayWithObjects:@"Двадцать", @"Тридцать", @"Сорок", @"Пятьдесят",
                       @"Шестьдесят", @"Семьдесят", @"Восемьдесят", @"Девяносто", nil];
-        fromTenToTwenty = [NSArray arrayWithObjects:@"Десять", @"Одиннадцать", @"Двенадцать",
+        self.fromTenToTwenty = [NSArray arrayWithObjects:@"Десять", @"Одиннадцать", @"Двенадцать",
                            @"Тринадцать", @"Четырнадцать", @"Пятнадцать", @"Шестнадцать",
                            @"Семнадцать", @"Восемнадцать", @"Девятнадцать", nil];
-        fractional = [NSArray arrayWithObjects:@"Целых", @"Десятых", @"Сотых", nil];
-        minus = @"Минус";
-        [upToTen retain];
-        [upToNinety retain];
-        [fromTenToTwenty retain];
-        [fractional retain];
+        self.fractional = [NSArray arrayWithObjects:@"Целых", @"Десятых", @"Сотых", nil];
+        self.minus = @"Минус";
+        [_upToTen retain];
+        [_upToNinety retain];
+        [_fromTenToTwenty retain];
+        [_fractional retain];
     }
     return self;
 }
 
-
-
 -(NSString*)convertFloatToWords: (float) number{
     NSString *strNumber = [NSString stringWithFormat:@"%.02f",number];
     NSString* resultString = @"";
-
     int fractionalPart = -1;
     int integerPart = [strNumber intValue];
     if (number < 0) {
-        resultString = [NSString stringWithFormat:@"%@%@",minus, resultString];
+        resultString = [NSString stringWithFormat:@"%@%@", self.minus, resultString];
         integerPart *= -1;
         if ((number > 9) || (number < -9)) {
             fractionalPart = [[strNumber substringFromIndex:4] intValue];
@@ -60,21 +61,15 @@ NSString* minus;
             fractionalPart = [[strNumber substringFromIndex:2] intValue];
         }
     }
-
     NSString *buf = @"";
     if (number != (int)number){
-        buf = [fractional objectAtIndex:0];
+        buf = [self.fractional objectAtIndex:0];
     }
     resultString = [NSString stringWithFormat:@"%@ %@ %@ %@",resultString, [self convertIntegerPartOfNumber: integerPart], buf, [self convertFractionalPartOfNumber: fractionalPart]];
     return resultString;
 }
 
-
-
-
-
 -(NSString*)convertFractionalPartOfNumber:(int) number{
-
     if (number == 0){
         return @"";
     }
@@ -86,9 +81,9 @@ NSString* minus;
     
     NSString *res = [self convertIntegerPartOfNumber: number];
     if (!isHundredths) {
-        return [NSString stringWithFormat:@"%@ %@",res,[fractional objectAtIndex: 1]];
+        return [NSString stringWithFormat:@"%@ %@",res,[self.fractional objectAtIndex: 1]];
     }
-    return [NSString stringWithFormat:@"%@ %@",res,[fractional objectAtIndex: 2]];
+    return [NSString stringWithFormat:@"%@ %@",res,[self.fractional objectAtIndex: 2]];
 }
 
 
@@ -103,9 +98,7 @@ NSString* minus;
         }else{
             ones = @"";
         }
-        
         return [NSString stringWithFormat:@"%@ %@", tens, ones];
-        
     }else{
         int tmp = number % 10;
         return [self selectNumberFormOneToNine:tmp withType:@"FromTenToTwenty"];
@@ -117,11 +110,11 @@ NSString* minus;
     for (int i = 0; i < 10; i++) {
         if (number == i) {
             if ([type  isEqualToString: @"UpToTen"]){
-                 return [upToTen objectAtIndex: i];
+                 return [self.upToTen objectAtIndex: i];
             } else if([type isEqualToString:@"FromTenToTwenty"]){
-                return [fromTenToTwenty objectAtIndex: i];
+                return [self.fromTenToTwenty objectAtIndex: i];
             }else if ([type isEqualToString:@"UpToNinety"]){
-                return [upToNinety objectAtIndex: i-2];
+                return [self.upToNinety objectAtIndex: i-2];
             }
         }
     }
@@ -130,11 +123,10 @@ NSString* minus;
 
 - (void)dealloc
 {
-    [upToTen release];
-    [upToNinety release];
-    [fromTenToTwenty release];
-    [fractional release];
-    
+    [_upToTen release];
+    [_upToNinety release];
+    [_fromTenToTwenty release];
+    [_fractional release];
     [super dealloc];
 }
 

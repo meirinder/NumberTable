@@ -10,8 +10,8 @@
 
 @interface NTFavouritesViewModel ()
 @property (nonatomic,retain) NTItem *favouriteItem;
-@property (nonatomic, retain) NSMutableArray<NTItem*>* itemStore;
-@property (nonatomic, retain) NTNumberStore *numberStore;
+@property (nonatomic, retain) NSMutableArray<NTItem*>* itemList;
+@property (nonatomic, retain) NTNumberStore *numberList;
 @property (nonatomic,readonly) NSMutableArray<NSNumber*>* indexes;
 @property (nonatomic, retain) NTUserDafaultsWorker *userDefaultsWorker;
 
@@ -20,64 +20,64 @@
 @implementation NTFavouritesViewModel
 
 -(void) processingFavouriteButton:(NSInteger) index{
-    if(_numberStore.numberList[[_indexes[index] integerValue]].isFavourite){
-        [self setUnfavourite:[_indexes[index] integerValue]];
+    if(self.numberList.numberList[[self.indexes[index] integerValue]].isFavourite){
+        [self setUnfavourite:[self.indexes[index] integerValue]];
     }else{
-        [self setFavourite:[_indexes[index] integerValue]];
+        [self setFavourite:[self.indexes[index] integerValue]];
     }
 }
 
 -(void) deleteNumer:(NSInteger)index{
-    [_numberStore.numberList removeObjectAtIndex:[_indexes[index] integerValue]];
+    [self.numberList.numberList removeObjectAtIndex:[self.indexes[index] integerValue]];
     [self fillItemStore];
-    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    [self.userDefaultsWorker archiveData: self.numberList.numberList forKey:@"numberStore"];
 }
 
--(BOOL) getPolarityOfCell:(NSInteger) index{
-    return _numberStore.numberList[[_indexes[index] integerValue]].isFavourite;
+-(BOOL) polarityOfCell:(NSInteger) index{
+    return self.numberList.numberList[[self.indexes[index] integerValue]].isFavourite;
 }
 
--(NSString*) getTextForStringNumberLabel:(NSInteger) index{
-    return _itemStore[index].numberConvertedTOString;
+-(NSString*) textForStringNumberLabel:(NSInteger) index{
+    return [self.itemList[index].numberConvertedTOString copy];
 }
 
--(UIColor*) getTextColorForNumberLabel:(NSInteger) index{
-    return _numberStore.numberList[[_indexes[index] integerValue]].color;
+-(UIColor*) textColorForNumberLabel:(NSInteger) index{
+    return [self.numberList.numberList[[self.indexes[index] integerValue]].color copy];
 }
 
--(NSString*) getTextForNumberLabel:(NSInteger) index{
-    return _itemStore[index].number;
+-(NSString*) textForNumberLabel:(NSInteger) index{
+    return [self.itemList[index].number copy];
 }
 
 - (instancetype)initWithNumberStore:(NTNumberStore*) numberStore{
     self = [super init];
-    _userDefaultsWorker = [[NTUserDafaultsWorker alloc] init];
+    self.userDefaultsWorker = [[NTUserDafaultsWorker alloc] init];
     if (self) {
-        self.numberStore = numberStore;
+        self.numberList = numberStore;
     }
     return self;
 }
 
--(NSMutableArray<NSNumber*>*) getIndexes{
-    return self.indexes;
+-(NSArray<NSNumber*>*) getIndexes{
+    return [self.indexes copy];
 }
 
--(NTNumberStore*) getNumberStore{
-    return self.numberStore;
+-(NTNumberStore*) numberStore{
+    return self.numberList;
 }
 
--(NSMutableArray<NTItem*>*) getItemStore{
-    return self.itemStore;
+-(NSMutableArray<NTItem*>*) itemStore{
+    return [self.itemList copy];
 }
 
 -(void)fillItemStore{
     _indexes = [[NSMutableArray alloc]init];
-    self.itemStore = [[NSMutableArray alloc]init];
-    for (int i = 0; i < _numberStore.numberList.count; i++) {
-        if (_numberStore.numberList[i].isFavourite){
-            self.favouriteItem = [[NTItem alloc] initWithFloat: _numberStore.numberList[i].value];
-            [_itemStore addObject:_favouriteItem];
-            [_indexes addObject:@(i)];
+    self.itemList = [[NSMutableArray alloc]init];
+    for (int i = 0; i < self.numberList.numberList.count; i++) {
+        if (self.numberList.numberList[i].isFavourite){
+            self.favouriteItem = [[NTItem alloc] initWithFloat: self.numberList.numberList[i].value];
+            [self.itemList addObject:self.favouriteItem];
+            [self.indexes addObject:@(i)];
         }
     }
 }
@@ -88,18 +88,18 @@
     [_indexes release];
     [_userDefaultsWorker release];
     [_favouriteItem release];
-    [_itemStore release];
+    [_itemList release];
     [super dealloc];
 }
 
 -(void)setFavourite:(NSInteger) cell{
-    self.numberStore.numberList[cell].isFavourite = YES;
-    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    self.numberList.numberList[cell].isFavourite = YES;
+    [self.userDefaultsWorker archiveData: self.numberList.numberList forKey:@"numberStore"];
 }
 
 -(void)setUnfavourite:(NSInteger) cell{
-    self.numberStore.numberList[cell].isFavourite = NO;
-    [_userDefaultsWorker archiveData: self.numberStore.numberList forKey:@"numberStore"];
+    self.numberList.numberList[cell].isFavourite = NO;
+    [self.userDefaultsWorker archiveData: self.numberList.numberList forKey:@"numberStore"];
 }
 
 

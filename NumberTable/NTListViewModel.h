@@ -15,17 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void) addItem;
 -(void) fillItemStore;
-
 -(void)setFavourite:(NSInteger) cell;
 -(void)setUnfavourite:(NSInteger) cell;
--(NSString*) getTextForNumberLabel:(NSInteger) index;
--(NSString*) getTextForStringNumberLabel:(NSInteger) index;
--(UIColor*) getTextColorForNumberLabel:(NSInteger) index;
--(NSMutableArray<NTItem*>*) getItemStore;
--(NTNumberStore*) getNumberStore;
--(BOOL) getPolarityOfCell:(NSInteger) index;
--(float) getValuePrepareInformation:(NSInteger) index;
--(BOOL) getFavouritePrepareInformation:(NSInteger) index;
+-(NSString*) textForNumberLabel:(NSInteger) index;
+-(NSString*) textForStringNumberLabel:(NSInteger) index;
+-(UIColor*) textColorForNumberLabel:(NSInteger) index;
+-(NSArray<NTItem*>*) itemStore;
+-(NTNumberStore*) numberStore;
+-(BOOL) polarityOfCell:(NSInteger) index;
+-(float) valuePrepareInformation:(NSInteger) index;
+-(BOOL) favouritePrepareInformation:(NSInteger) index;
 -(void) processingFavouriteButton:(NSInteger) index;
 -(void) setNumerStoreValue:(NSInteger) index value: (float) value;
 -(void) deleteNumer:(NSInteger)index;
@@ -34,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL) canChangeNumber;
 -(BOOL) canAddNumber;
 -(instancetype)initWithNumberStore:(NTNumberStore*) numberStore;
+
 @end
 
 NS_ASSUME_NONNULL_END
