@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NTChartView : UIView
 
 @property (nonatomic,retain) NSMutableArray *values;
+@property (nonatomic,retain) IBInspectable UIColor *colorOfInscription;
+@property (nonatomic,retain) IBInspectable UIColor *colorOfCoordinateGrid;
+@property (nonatomic,retain) IBInspectable UIColor *backGroundColor;
+
 
 @end
 

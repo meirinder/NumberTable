@@ -7,7 +7,10 @@
 //
 
 #import "NTChartView.h"
+@interface NTChartView()
 
+
+@end
 
 @implementation NTChartView
 
@@ -17,7 +20,8 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClearRect(context, rect);
     CGRect drawRect = CGRectMake(rect.origin.x, rect.origin.y,rect.size.width, rect.size.height);
-    CGContextSetRGBFillColor(context, 130.0f/255.0f, 60.0f/255.0f, 180.0f/255.0f, 1.0f);
+    CGContextSetFillColorWithColor(context, self.backGroundColor.CGColor);
+   // CGContextSetRGBFillColor(context, 130.0f/255.0f, 60.0f/255.0f, 180.0f/255.0f, 1.0f);
     CGContextFillRect(context, drawRect);
     [self drawInscriptions:rect context:context];
     [self drawCoordinateGrid:rect context:context ];
@@ -33,7 +37,9 @@
     int step = [self setStep];
     int part = [self setPart:step];
     for (int i = 0 ; i<part; i++) {
-        CGContextSetRGBFillColor(context, 0, 255, 0, 0.5);
+        CGContextSetFillColorWithColor(context, self.colorOfCoordinateGrid.CGColor);
+
+       // CGContextSetRGBFillColor(context, 0, 255, 0, 0.5);
         verticalSize = (i*(rect.size.height-bottomIndent)/max)*nintyPersent*step;
         
         CGContextFillRect(context, CGRectMake(rect.size.width/2-5, rect.size.height-verticalSize - bottomIndent, 10, 2));
@@ -82,10 +88,13 @@
         
         if (verticalSize != 0){
             
-            CGContextSetRGBFillColor(context, 255, 0, 0, 1);
+            CGContextSetFillColorWithColor(context, self.colorOfInscription.CGColor);
+           // CGContextSetRGBFillColor(context, 255, 0, 0, 1);
             CGContextFillRect(context, CGRectMake(i*horizontalStep+horizontalStep/lateralIndent, rect.size.height-verticalSize - bottomIndent, rect.size.width / self.values.count - horizontalStep/(lateralIndent/2), verticalSize));
         }
-        CGContextSetRGBFillColor(context, 0, 255, 0, 0.5);
+        CGContextSetFillColorWithColor(context, self.colorOfCoordinateGrid.CGColor);
+
+      //  CGContextSetRGBFillColor(context, 0, 255, 0, 0.5);
         CGContextFillRect(context, CGRectMake(i*horizontalStep+horizontalStep/lateralIndent + (rect.size.width / self.values.count - horizontalStep/(lateralIndent/2))/2, rect.size.height-bottomIndent , 2, 8));
     }
     for (int i = 0; i < [self.values count]/2; i++) {
@@ -93,12 +102,15 @@
         CGRect recte = CGRectMake(i*horizontalStep+horizontalStep/lateralIndent - 7 + (rect.size.width / self.values.count - horizontalStep/(lateralIndent/2))/2, rect.size.height-bottomIndent+8, 50, 20);
         [text drawInRect:recte withAttributes:@{}];
         text = [NSString stringWithFormat:@"%ld", textValue*(-1)];
+        
         recte = CGRectMake(rect.size.width - (i*horizontalStep+horizontalStep/10 + 5 + (rect.size.width / self.values.count - horizontalStep/5)/2), rect.size.height-bottomIndent+8, 50, 20);
         [text drawInRect:recte withAttributes:@{}];
         double tmp = 200/[self.values count];
         textValue += (int)tmp;
     }
-    CGContextSetRGBFillColor(context, 0, 255, 0, 0.5);
+    CGContextSetFillColorWithColor(context, self.colorOfCoordinateGrid.CGColor);
+
+   // CGContextSetRGBFillColor(context, 0, 255, 0, 0.5);
 }
 
 -(int) maxCount{
